@@ -5,8 +5,27 @@
 }
 
 <div class="text-center">
-    <br />
-    <h1 class="display-4">Welcome to our store!</h1>
+
+    @foreach (var item in Model.ListModelKits)
+    {
+        <h2 class="my-3">@item.Name</h2>
+        <div class="row">
+            <div class="col-4">
+                <img class="img-fluid rounded" src="@item.ImageUri">
+            </div>
+            <div class="col-6">
+                <h4 class="my-3">About:</h4>
+                <p>@item.Description</p>
+                <h4 class="my-3">More Info:</h4>
+                <ul>
+                    <li>Label1: @item.ModelGrade</li>
+                    <li>Label2: @item.Price</li>
+                    <li>Label3: value3</li>
+                </ul>
+                <a class="btn my-3 btn-primary">Edit</a>
+            </div>
+        </div>
+    }   
     <br />
     <img src="images/gundam-header.webp" />
     
