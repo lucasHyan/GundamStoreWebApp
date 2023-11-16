@@ -8,25 +8,20 @@
 
     @foreach (var item in Model.ListModelKits)
     {
-        <h2 class="my-3">@item.Name</h2>
-        <div class="row">
-            <div class="col-4">
-                <img class="img-fluid rounded" src="@item.ImageUri">
-            </div>
-            <div class="col-6">
-                <h4 class="my-3">About:</h4>
-                <p>@item.Description</p>
-                <h4 class="my-3">More Info:</h4>
-                <ul>
-                    <li>Label1: @item.ModelGrade</li>
-                    <li>Label2: @item.Price</li>
-                    <li>Label3: value3</li>
-                </ul>
-                <a class="btn my-3 btn-primary">Edit</a>
+        <div class="row justify-content-md-center">
+            <div class="card col-3 m-3">
+                <img src="@item.ImageUri" class="p-3" style="border-radius: 25px">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    <a class="btn btn-primary"
+                    asp-page="/Details"
+                    asp-route-id="@item.ModelKitId">Ver mais</a>
+                </div>
             </div>
         </div>
-    }   
+    }
     <br />
     <img src="images/gundam-header.webp" />
-    
+
 </div>
