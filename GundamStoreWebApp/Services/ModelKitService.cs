@@ -2,11 +2,17 @@
 {
     using GundamStoreWebApp.Models;
 
-    public class ModelKitService
+    public class ModelKitService : IModelKitService
     {
-        public List<ModelKit> GetModelKits()
+        private IList<ModelKit> _modelKits;
+        public ModelKitService()
+            => LoadInitialList();
+
+
+
+        private void LoadInitialList()
         {
-            return new List<ModelKit>()
+            _modelKits = new List<ModelKit>()
             {
                 new ModelKit
                 {
@@ -17,6 +23,7 @@
                     Price = 99.99,
                     ModelGrade = "RG",
                     RegistrationDate = DateTime.Now,
+                    ExpressDelivery = true
                 },
                 new ModelKit
                 {
@@ -27,6 +34,7 @@
                     Price = 79.00,
                     ModelGrade = "RG",
                     RegistrationDate = DateTime.Now,
+                    ExpressDelivery = false
                 },
                 new ModelKit
                 {
@@ -37,13 +45,24 @@
                     Price = 150.00,
                     ModelGrade = "RG",
                     RegistrationDate = DateTime.Now,
+                    ExpressDelivery = true
                 }
             };
         }
+        public IList<ModelKit> GetAllModelKits()
+        {
+            return _modelKits;
+        }
 
-        public ModelKit GetModelKit(int id) 
-            => GetModelKits().SingleOrDefault(item => item.ModelKitId == id);
+        public ModelKit GetModelKit(int id)
+            => GetAllModelKits().SingleOrDefault(item => item.ModelKitId == id);
 
+        public void AddModelKit(ModelKit modelKit)
+        {
+            int nextId = _modelKits.Max(item => item.ModelKitId) + 1;
+            modelKit.ModelKitId = nextId;
+            _modelKits.Add(modelKit);
+        }
     }
 }
 

@@ -7,12 +7,22 @@ namespace GundamStoreWebApp.Pages
 {
     public class DetailsModel : PageModel
     {
+        private IModelKitService _service;
+        public DetailsModel(IModelKitService service) 
+        {
+            _service = service;
+        }
         public ModelKit ModelKit { get; private set; }
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
-            var service = new ModelKitService();
-            ModelKit = service.GetModelKit(id);
+            ModelKit = _service.GetModelKit(id);
+
+            if (ModelKit == null)
+            {
+                      return NotFound();  
+            }
+            return Page();
         }
     }
 }

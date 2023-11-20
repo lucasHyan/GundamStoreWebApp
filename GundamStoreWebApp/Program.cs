@@ -1,3 +1,4 @@
+using GundamStoreWebApp.Services;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 
@@ -5,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton<IModelKitService, ModelKitService>();
 
 var app = builder.Build();
 

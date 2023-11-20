@@ -16,12 +16,13 @@
                     <p class="card-text">@item.Description</p>
                     <a class="btn btn-primary"
                     asp-page="/Details"
+                    asp-route-slug="@item.NameSlug"
                     asp-route-id="@item.ModelKitId">Ver mais</a>
                 </div>
             </div>
         </div>
     }
-    <br />
+    <br/>
     <img src="images/gundam-header.webp" />
 
 </div>

@@ -6,14 +6,17 @@ namespace GundamStoreWebApp.Pages
 {
     public class IndexModel : PageModel
     {
+        private IModelKitService _service;
+        public IndexModel(IModelKitService service)
+        {
+            _service = service;
+        }
         public IList<ModelKit> ListModelKits { get; private set; }
         public void OnGet()
         {
             ViewData["Title"] = "Home page";
 
-            var service = new ModelKitService();
-
-            ListModelKits = service.GetModelKits();
+            ListModelKits = _service.GetAllModelKits();
         }
     }
 }
