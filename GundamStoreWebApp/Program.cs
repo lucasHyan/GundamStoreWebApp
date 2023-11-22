@@ -1,5 +1,6 @@
 using GundamStoreWebApp.Services;
 using Microsoft.AspNetCore.Localization;
+using NToastNotify;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +10,18 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IModelKitService, ModelKitService>();
 
-var app = builder.Build();
+//Add service ToastNotify
+builder.Services.AddRazorPages().AddNToastNotifyToastr(new ToastrOptions()
+{
+    ProgressBar=true,
+    PositionClass=ToastPositions.TopRight,
+    PreventDuplicates=true,
+    CloseButton=true
+});
 
+
+var app = builder.Build();
+app.UseNToastNotify();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
