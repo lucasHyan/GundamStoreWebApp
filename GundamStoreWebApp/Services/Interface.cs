@@ -2,9 +2,11 @@
 
 namespace GundamStoreWebApp.Services;
 
-public interface IModelKitService
+public interface IModelKitService 
 {
-    public IList<ModelKit> GetAllModelKits();
-    public void AddModelKit(ModelKit modelKit);
-    public ModelKit GetModelKit(int id);
+     IList<ModelKit> GetAllModelKits();
+     void AddModelKit(ModelKit modelKit);
+     ModelKit GetModelKit(int id);
+     void EditModelKit(ModelKit modelKit);
+     void DeleteModelKit(int id);
 }

@@ -63,6 +63,26 @@
             modelKit.ModelKitId = nextId;
             _modelKits.Add(modelKit);
         }
+
+        public void EditModelKit(ModelKit modelKit)
+        {
+            ModelKit foundModelKit = _modelKits.SingleOrDefault(item => item.ModelKitId == modelKit.ModelKitId);
+            foundModelKit.Name = modelKit.Name;
+            foundModelKit.Description = modelKit.Description;
+            foundModelKit.Price = modelKit.Price;
+            foundModelKit.ModelGrade = modelKit.ModelGrade;
+            foundModelKit.ExpressDelivery = modelKit.ExpressDelivery;
+            foundModelKit.ImageUri = modelKit.ImageUri;
+            foundModelKit.RegistrationDate = modelKit.RegistrationDate;
+
+
+        }
+
+        public void DeleteModelKit(int id)
+        {
+            ModelKit foundModelKit = GetModelKit(id);
+            _modelKits.Remove(foundModelKit);
+        }
     }
 }
 

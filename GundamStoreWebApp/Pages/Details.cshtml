@@ -19,7 +19,9 @@
             <li>Price: @Html.DisplayFor(model => model.ModelKit.Price)</li>
             <li>Available since: @Html.DisplayFor(model => model.ModelKit.RegistrationDate)</li>
         </ul>
-        <a class="btn my-3 btn-primary">Edit</a>
+        <a class="btn btn-primary"
+           asp-page="/Edit"
+           asp-route-id="@Model.ModelKit.ModelKitId">Edit</a>
     </div>
 </div>
  
