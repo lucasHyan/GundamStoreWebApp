@@ -1,4 +1,4 @@
-﻿namespace GundamStoreWebApp.Services
+﻿namespace GundamStoreWebApp.Services.Memory
 {
     using GundamStoreWebApp.Models;
 
@@ -82,6 +82,16 @@
         {
             ModelKit foundModelKit = GetModelKit(id);
             _modelKits.Remove(foundModelKit);
+        }
+
+        public IList<Brand> GetBrands()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Brand GetBrand(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

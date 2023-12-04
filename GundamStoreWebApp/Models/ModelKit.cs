@@ -4,11 +4,12 @@ namespace GundamStoreWebApp.Models
 {
     public class ModelKit
     {
+        [Key]
         public int ModelKitId { get; set; }
 
         public string NameSlug => Name.ToLower().Replace(" ", "-");
         [Required(ErrorMessage = "Required to have a name.")]
-        [StringLength(50, MinimumLength =6, ErrorMessage ="Name must be between 6 and 50 characters")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Name must be between 6 and 50 characters")]
         public string Name { get; set; }
 
 
@@ -32,6 +33,9 @@ namespace GundamStoreWebApp.Models
 
         public string ExpressDeliveryFormated => ExpressDelivery ? "yes" : "no";
         public Boolean ExpressDelivery { get; set; }
+
+        [Display(Name = "Brand")]
+        public int? BrandID { get; set; }
 
 
     }

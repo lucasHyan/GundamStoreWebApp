@@ -1,5 +1,8 @@
+using GundamStoreWebApp.Data;
 using GundamStoreWebApp.Services;
+using GundamStoreWebApp.Services.Data;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 using System.Globalization;
 
@@ -8,8 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<IModelKitService, ModelKitService>();
+builder.Services.AddTransient<IModelKitService, ModelKitService>();
 
+builder.Services.AddDbContext<GundamStoreDbContext>();
 //Add service ToastNotify
 builder.Services.AddRazorPages().AddNToastNotifyToastr(new ToastrOptions()
 {
@@ -30,6 +34,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+var context = new GundamStoreDbContext();
+context.Database.Migrate();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -37,7 +44,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Configurar a cultura padrão para en-US
+// Configurar a cultura padrï¿½o para en-US
 var defaultCulture = new CultureInfo("en-US");
 app.UseRequestLocalization(new RequestLocalizationOptions
 {

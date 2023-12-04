@@ -18,6 +18,10 @@
             <li>Grade: @Model.ModelKit.ModelGrade</li>
             <li>Price: @Html.DisplayFor(model => model.ModelKit.Price)</li>
             <li>Available since: @Html.DisplayFor(model => model.ModelKit.RegistrationDate)</li>
+            @if (Model.BrandDescription is not null)
+            {
+            <li>Brand : @Html.DisplayFor(model => model.BrandDescription)</li>
+            }
         </ul>
         <a class="btn btn-primary"
            asp-page="/Edit"

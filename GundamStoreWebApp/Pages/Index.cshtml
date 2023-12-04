@@ -5,24 +5,22 @@
 }
 
 <div class="text-center">
-
-    @foreach (var item in Model.ListModelKits)
-    {
-        <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center">
+        @foreach (var item in Model.ListModelKits)
+        {
             <div class="card col-3 m-3">
                 <img src="@item.ImageUri" class="p-3" style="border-radius: 25px">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <p class="card-text">@item.Description</p>
                     <a class="btn btn-primary"
-                    asp-page="/Details"
-                    asp-route-slug="@item.NameSlug"
-                    asp-route-id="@item.ModelKitId">More about</a>
+                       asp-page="/Details"
+                       asp-route-slug="@item.NameSlug"
+                       asp-route-id="@item.ModelKitId">More about</a>
                 </div>
             </div>
-        </div>
-    }
-    <br/>
+        }
+    </div>
+    <br />
     <img src="images/gundam-header.webp" />
-
 </div>
